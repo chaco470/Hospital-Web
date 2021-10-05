@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var os in ViewBag.ObrasSociales)
+        {
+            @if(@os.Estado == "Activa"){
+                <div class="card-group">
+                    <div class="card text-white bg-secondary mb-3" style="margin: 5px;">
+                        <div class="card-header" style="padding: 10px;">@os.Nombre</div>
+                        <div class="card-body">
+                            <a href="@os.PaginaWeb" style="color: white;">Ver Pagina</a>
+
+                        </div>
+                    </div>
+                </div>
+            }else{
+                <div class="card-group">
+                    <div class="card text-white bg-danger mb-3" style="margin: 5px;">
+                        <div class="card-header" style="padding: 10px;" >@os.Nombre</div>
+                        <div class="card-body">
+                            
+                            <button type="button" class="btn btn-light" data-toggle="modal"
+                                data-target='#@("deleteOSConfirmModal"+os.ID)'>Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            }
+                <!-- Modal Eliminar-->
+                <div class="modal fade" id='@("deleteOSConfirmModal"+os.ID)' tabindex="-1" role="dialog"
+                    aria-labelledby="deleteOSConfirmModalLabel" data-backdrop="static" data-keyboard="false"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" id="headerModal">
+                                <h5 class="modal-title" id="deleteOSConfirmModalLabel">
+                                    <i class="fas fa-exclamation-triangle"></i> Atención !
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <form method="DELETE" asp-action="EliminarObraSocial">
+                                <div class="modal-body" id="bodyModal">
+                                    <input type="hidden" name="ID" value="@os.ID">
+                                    Va a eliminar la @os.Nombre Está seguro de querer
+                                    eliminarla?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">No</button>
+                                    <button type="submit" class="btn btn-dark">Si</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        }
+    </div>
+</div>

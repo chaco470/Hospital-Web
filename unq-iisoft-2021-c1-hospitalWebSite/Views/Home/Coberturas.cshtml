@@ -1,0 +1,28 @@
+<div class="title-page">
+  Coberturas
+</div>
+
+<div class="container">
+  <div class="row row-cols-4">
+
+    @foreach (var os in ViewBag.ObrasSociales)
+    {
+
+      <div class="card text-white bg-dark mb-3" id="card-os">
+        <div class="card-header">
+            @os.Nombre <a href=@os.PaginaWeb target="_blank">
+            <i class="fas fa-globe" style="color: white;"></i></a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Planes</h5>
+          <p class="card-text">
+            @foreach (var plan in @os.Planes){
+              <div style="font-family: 'Quicksand', sans-serif;">• @plan.Nombre</div>
+            }
+          </p>
+        </div>
+      </div>
+ }
+
+  </div>
+</div>

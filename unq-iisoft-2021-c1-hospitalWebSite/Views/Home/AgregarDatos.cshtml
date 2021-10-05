@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="alert alert-dark" role="alert">
+        <i class="fas fa-info-circle"></i> Administrador: Recuerde que solo debe agregar información con el
+        correspondiente pedido escrito del director médico de la institución.
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col mb-4">
+            <div class="card" style="background-color: wheat;">
+                <div class="card-body">
+                    <h5 class="card-title">Agregar un Profesional</h5>
+                    <div class="card-text" style="font-family: 'Quicksand', sans-serif;">
+                        <form class="px-4 py-3" method="POST" asp-action="AgregarMedico">
+
+                            <div class="form-group">
+                                <label for="nombreYApellido">Nombre y Apellido</label>
+                                <input type="text" class="form-control" name="nombreYApellido" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="especialidad">Especialidad</label>
+                                <select class="form-control" name="especialidad">
+                                    @foreach (var esp in ViewBag.Especialidades)
+                                    {
+                                        <option>@esp.Nombre</option>
+                                    }
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rolEnEspecialidad">Rol en Especialidad</label>
+                                <select class="form-control" name="rolEnEspecialidad">
+                                    @foreach (var rol in ViewBag.Roles)
+                                    {
+                                        <option>@rol.Nombre</option>
+                                    }
+                                    
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div class="card" style="background-color: wheat;">
+                <div class="card-body">
+                    <h5 class="card-title">Agregar una Nota</h5>
+                    <div class="card-text" style="font-family: 'Quicksand', sans-serif;">
+                        <form class="px-4 py-3" method="POST" asp-action="AgregarNota">
+
+                            <div class="form-group">
+                                <label for="titulo">Título</label>
+                                <input type="text" class="form-control" name="titulo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cuerpo">Cuerpo</label>
+                                 <textarea type="text" class="form-control" name="cuerpo" required ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha de publicación</label>
+                                <input type="text" class="form-control" name="fecha" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="imagen">URL de la Imagen</label>
+                                <input type="text" class="form-control" name="imagen" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="URLnota">URL Nota Completa</label>
+                                <input type="text" class="form-control" name="URLnota" required>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card" style="background-color: wheat;">
+                <div class="card-body">
+                    <h5 class="card-title">Agregar una Obra Social</h5>
+                    <div class="card-text" style="font-family: 'Quicksand', sans-serif;">
+                        <form class="px-4 py-3" method="POST" asp-action="AgregarObraSocial">
+
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="web">Pagina Web</label>
+                                <input type="text" class="form-control" name="web" required >
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado">
+                                    <option>Activa</option>
+                                    <option>Inactiva</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

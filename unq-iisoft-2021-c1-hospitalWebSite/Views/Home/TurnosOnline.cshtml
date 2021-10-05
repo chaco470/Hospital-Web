@@ -1,0 +1,24 @@
+<div class="">
+    <div class="row">
+        <div class="col-sm">
+            <h4 class="title-page">Solicitá tu turno</h4>
+            <form method="POST" action='@Url.Action("ElegirEspecialista", "Home")'>
+
+              
+                <div class="form-group">
+        <label for="obraSocial" style="width:50%;">Especialidad</label>
+        <select class="form-control" id="especialidad" style="width:50%;" name="especialidad">
+         @foreach (var os in ViewBag.Especialidades){
+             <option >@os.Nombre</option>
+            
+         }
+        
+      
+    </select>
+  </div>
+
+                <button type="submit" id="continua" class="btn btn-dark">Continuar</button>
+            </form>
+        </div>
+    </div>
+</div>

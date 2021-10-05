@@ -1,0 +1,24 @@
+@{
+    bool usuarioExistente = ViewBag.MailRegistrado != null;
+}
+
+@if(usuarioExistente){
+    <div class="title-page">
+        <i class="fas fa-exclamation-triangle" style="color: red;"></i> <u style="color: red;">Error</u>
+    </div>
+
+    <div class="alert alert-danger" role="alert">
+        <span style="color: black;">El mail ingresado ya se encuentra registrado, por favor 
+            <a href=/Home/Registro>intentá nuevamente</a> o <a href=/Home/Logueo>Iniciá Sesión.</a>
+        </span>
+    </div>
+}else{
+    
+    <div class="title-page">
+        <u>Bienvenido</u>
+    </div>
+
+    <div class="alert alert-success" role="alert">
+        Te registraste con éxito. Por favor <a href=/Home/Logueo>Iniciá Sesión.</a>
+    </div>
+}

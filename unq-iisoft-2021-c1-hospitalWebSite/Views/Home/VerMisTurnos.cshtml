@@ -1,0 +1,52 @@
+@model IEnumerable<Models.Hospital.Turno>
+
+ <div class="container-fluid">
+
+     <div>
+      @foreach (var turno in Model ) {
+
+            <ul>
+
+                <li>ID: @turno.ID</li>
+                <li>Especialidad: @turno.Especialidad</li>
+                <li>Especialista: @turno.Especialista</li>
+            </ul>
+
+    <div style="margin: 15px 0;" >
+        <button class="btn btn-dark" id = "btn-@turno.ID" data-toggle="modal" data-target='#@("deleteConfirmModal"+turno.ID)'>Cancelar Turno</button>
+
+    <!-- Modal Eliminar-->
+         <div class="modal fade" id='@("deleteConfirmModal"+turno.ID)' tabindex="-1" role="dialog"
+                            aria-labelledby="deleteUserConfirmModalLabel" data-backdrop="static" data-keyboard="false"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="headerModal" style="background-color: wheat;">
+                                        <h5 class="modal-title" id="deleteUserConfirmModallLabel">
+                                            <i class="fas fa-exclamation-triangle"></i> Atención !
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <form method="DELETE" asp-action="CancelarTurno">
+                                        <div class="modal-body" id="bodyModal">
+                                            <input type="hidden" name="ID" value="@turno.ID">
+                                            Está seguro de eliminar el turno con @turno.Especialidad ? No podrá deshacer esta acción.
+                                        </div>
+                                        <div class="modal-footer" style="background-color: wheat;">
+                                            <button type="button" class="btn btn-dark" data-dismiss="modal">No</button>
+                                            <button type="submit" id="btn-si" class="btn btn-dark">Si</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+         </div>
+
+    </div>
+        
+      }
+    </div>
+ </div>
+
+  

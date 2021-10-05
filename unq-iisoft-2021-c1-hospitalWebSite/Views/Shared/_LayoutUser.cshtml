@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Proyecto</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/institucionalCSS.css" />
+    <link rel="stylesheet" href="~/css/loggin.css" />
+    <link rel="stylesheet" href="~/css/HomeViews.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+    <!-- FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!--@RenderSection("Styles", required: false);-->
+</head>
+
+<body>
+    <header>
+        <div class="title-sf">
+            <img src="~/Imagenes/Fundacion-favaloro.jpg">
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" id="turnos-online" asp-area="" asp-controller="Home"
+                                asp-action="TurnosOnline">Turnos Online</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MiPerfil">Mi Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link text-dark" id="mis-turnos" asp-area="" asp-controller="Home"
+                                asp-action="VerMisTurnos">Mis turnos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="salir" asp-area="" asp-controller="Home"
+                                asp-action="Salir">Salir</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container" style="margin-bottom: 2rem;">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="redes-footer">
+            <div>
+                <span>Encontranos en las redes</span>
+            </div>
+            <div>
+                <a href="https://www.facebook.com/Fundacion.Favaloro/" target="_blank" style="color: dimgray;"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/fundacionfavaloro/" target="_blank" style="color: dimgray;"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/fundfavaloro?lang=es" target="_blank" style="color: dimgray;"><i
+                        class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

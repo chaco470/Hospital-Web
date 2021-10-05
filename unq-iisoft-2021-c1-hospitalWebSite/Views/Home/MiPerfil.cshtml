@@ -1,0 +1,102 @@
+<div class="titulo-pagina">
+    <span>Mi Perfil</span>
+</div>
+
+<div class="card text-center" style="width: 50%;">
+    <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-user"></i> Datos Personales</h5>
+        <p class="card-text">
+        <div class="user-data">
+            <label for="nombre"><b><u>Nombre y Apellido:</u></b> @ViewBag.Nombre @ViewBag.Apellido</label>
+        </div>
+        <div class="user-data">
+            <label for="mail"><b><u>Mail:</u></b> @ViewBag.Mail</label>
+        </div>
+        <div class="user-data">
+            <label for="ObraSocial"><b><u>Obra Social:</u></b> @ViewBag.ObraSocial</label>
+        </div>
+        </p>
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target='#editUsuarioModal'>Editar</button>
+    </div>
+
+    <!-- Modal Editar-->
+    <div class="modal fade" id='editUsuarioModal' tabindex="-1" role="dialog" aria-labelledby="editUsuarioModalLabel"
+        data-backdrop="static" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="headerModal">
+                    <h5 class="modal-title" id="editUsuarioModalLabel">@ViewBag.Nombre @ViewBag.Apellido</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form method="POST" asp-action="EditarUsuario">
+                    <div class="modal-body" id="bodyModal">
+
+                        <input type="hidden" name="mail" value="@ViewBag.Mail">
+                        <div class="form-group">
+                            <label for="obraSocial">ObraSocial</label>
+                            <select class="form-control" name="obraSocial">
+                                @foreach (var os in ViewBag.ObrasSociales)
+                                {
+                                    @if(@os.Nombre == @ViewBag.ObraSocial){
+                                        <option selected="true">@os.Nombre</option>
+                                    }else{
+                                        <option>@os.Nombre</option>
+                                    }
+                                    
+                                }
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña</label>
+                            <input type="password" value="@ViewBag.Contraseña" class="form-control" name="contraseña"
+                                required>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-dark">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="margin: 15px 0;" >
+    <button class="btn btn-dark" data-toggle="modal" data-target='#deleteUserConfirmModal'>Eliminar
+        Cuenta</button>
+
+    <!-- Modal Eliminar-->
+    <div class="modal fade" id='deleteUserConfirmModal' tabindex="-1" role="dialog"
+        aria-labelledby="deleteUserConfirmModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="headerModal" style="background-color: wheat;">
+                    <h5 class="modal-title" id="deleteUserConfirmModallLabel">
+                        <i class="fas fa-exclamation-triangle"></i> Atención !
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form method="DELETE" asp-action="EliminarCuenta">
+                    <div class="modal-body" id="bodyModal">
+                        <input type="hidden" name="mail" value="@ViewBag.Mail">
+                        Está seguro de eliminar su cuenta? Esta acción es irreversible. Deberá volver a registrarse y perderá toda su información.
+                    </div>
+                    <div class="modal-footer" style="background-color: wheat;">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-dark">Si</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

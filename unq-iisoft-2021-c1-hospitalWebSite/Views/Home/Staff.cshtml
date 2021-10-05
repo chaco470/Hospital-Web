@@ -1,0 +1,35 @@
+﻿<div class="title">
+  Servicios Médicos
+</div>
+
+<div class="row">
+  <div class="col">
+    <div id="accordion">
+
+      @foreach(var esp in ViewBag.Especialidades){
+        
+          <div class="card">
+            <div class="card-header" id="card-accordion-style" id='@("heading"+esp.ID)'>
+              <h5 class="mb-0">
+              <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
+                data-target='#@("collapse"+esp.ID)' aria-expanded="false" aria-controls='@("collapse"+esp.ID)'>
+                @esp.Nombre
+              </button>
+              </h5>
+            </div>
+
+            <div id='@("collapse"+esp.ID)' class="collapse" aria-labelledby='@("heading"+esp.ID)' data-parent="#accordion">
+              <div class="card-body">
+                @foreach (var medico in ViewBag.Medicos) {
+                  @if(@medico.Especialidad.Nombre == @esp.Nombre){
+                    <div>@medico.NombreYApellido - @medico.RolEnEspecialidad.Nombre</div>
+                  }
+                        
+                }
+              </div>
+            </div>
+          </div>
+      }
+    </div>
+  </div>
+</div>
